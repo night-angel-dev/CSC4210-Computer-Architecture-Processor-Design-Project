@@ -25,20 +25,20 @@ Edit `config.py` to change:
 
 
 ## Example Output
-==========================================================
+
 32-BIT MEMORY HIERARCHY SIMULATOR
-==========================================================
+
 Architecture: 32-bit (4-byte instructions)
 Hierarchy: SSD -> DRAM -> L3 -> L2 -> L1 -> CPU
-==========================================================
-SSD: Loaded 1000 instructions (byte addresses 0 to 3996)
-==========================================================
-MEMORY HIERARCHY SIMULATION
-==========================================================
 
-==========================================================
+SSD: Loaded 1000 instructions (byte addresses 0 to 3996)
+
+MEMORY HIERARCHY SIMULATION
+
+
+
 MEMORY HIERARCHY CONFIGURATION
-==========================================================
+
 SSD:      1000 instructions, Latency: 100 cycles
 DRAM:      256 instructions, Latency:  50 cycles
 L3 Cache:   64 instructions, Latency:  10 cycles
@@ -48,10 +48,10 @@ L1 Cache:   16 instructions, Latency:   1 cycle
 Bandwidth:        1 instruction(s)/cycle
 Replacement Policy: LRU
 Write Policy:       write_back
-==========================================================
+
 
 INSTRUCTION ACCESS TRACE
-----------------------------------------------------------
+
 
 Trace (50 accesses):
   Access   1: 0x00000000
@@ -76,9 +76,9 @@ Trace (50 accesses):
   Access  20: 0x0000004C
   ... and 30 more accesses
 
-==========================================================
+
 EXECUTING ACCESSES
-==========================================================
+
 
 Access 1: READ address 0x00000000
   Retrieved instruction: 0x10000000
@@ -230,34 +230,34 @@ Access 49: READ address 0x000000C0
 Access 50: READ address 0x000000C4
   Retrieved instruction: 0x100000C4
 
-==========================================================
+
 SIMULATION RESULTS
-==========================================================
+
 
 CACHE STATISTICS
-----------------------------------------------------------
+
 L1: Hits=0, Misses=50, Hit Rate=0.0%
 L2: Hits=0, Misses=50, Hit Rate=0.0%
 L3: Hits=0, Misses=50, Hit Rate=0.0%
 
 DRAM STATISTICS
-----------------------------------------------------------
+
 DRAM: Accesses=50, Hits=0, Hit Rate=0.0%
 
 SSD STATISTICS
-----------------------------------------------------------
+
 SSD: Accesses=50, Hit Rate=100.0%
 
 CPU STATISTICS
-----------------------------------------------------------
+
 Instructions Executed: 0
 Total Reads: 50
 Total Writes: 0
 Total Cycles: 50
 
-==========================================================
+
 FINAL MEMORY STATE
-==========================================================
+
 
 L1 Cache Contents (16 instructions):
   (showing first 10 of 16)
@@ -324,13 +324,13 @@ SSD Contents (1000 instructions):
   0x00000008: 0x10000020
   0x00000009: 0x10000024
 
-==========================================================
+
 SIMULATION SUMMARY
-==========================================================
+
 Trace Type:      sequential
 Total Accesses:  50
 Total Cycles:    50
 L1 Hit Rate:     0.0%
 L2 Hit Rate:     0.0%
 L3 Hit Rate:     0.0%
-==========================================================
+
