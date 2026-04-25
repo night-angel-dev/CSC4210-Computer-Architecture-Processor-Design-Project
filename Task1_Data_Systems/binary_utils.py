@@ -82,12 +82,13 @@ def binary_addition(binary_str1, binary_str2):
         result.insert(0, str(carry))
         
     result_str = ''.join(result)
-    
-    # Note, Armando you need to fix this later. You shouldn't probably be truncating to
-    # the correct 32 bit size here.!!!!!!! I'll totally read this next time. 12 hours to submit currently 4:46 AM
+        
+    # Mask to 32 bits 
     if len(result_str) > 32:
         result_str = result_str[-32:]
-    
+    elif len(result_str) < 32:
+        result_str = result_str.zfill(32)
+        
     # # debug check
     # print(f"Result {result_str} ")
     
@@ -230,4 +231,94 @@ def pad_and_apply_sign(binary_str, is_negative, bit_width):
         return twos_complement(padded)
     
     return padded
+
+
+def invert_bits(binary_str):
+    """
+    Invert all bits in a binary string (0 becomes 1, 1 becomes 0)
     
+    @param binary_str - Binary string to invert
+    @return - Inverted binary string of same length
+    """
+    inverted_bits = []
+    
+    for bit in binary_str:
+        if bit == '0':
+            inverted_bits.append('1')
+        else:
+            inverted_bits.append('0')
+    
+    return ''.join(inverted_bits)
+
+
+
+def mask_to_32bits(value, as_unsigned=True):
+    """
+    Mask a value to 32 bits.
+    
+    @param value - Integer value to mask (can be int, str, or hex)
+    @param as_unsigned - If True, return unsigned 0-4294967295.
+                         If False, return signed -2147483648 to 2147483647
+    @return - Masked integer value within 32-bit range
+    """
+    # Handle different input types
+    if isinstance(value, str):
+        # Try to convert from binary or hex string
+        if value.startswith('0x') or value.startswith('0X'):
+            value = int(value, 16)
+        elif all(c in '01' for c in value):
+            value = int(value, 2)
+        else:
+            value = int(value)
+    
+    # Mask to 32 bits (unsigned)
+    masked = value & 0xFFFFFFFF
+    
+    # Convert to signed if requested
+    if not as_unsigned and masked >= 0x80000000:
+        masked = masked - 0x100000000
+    
+    return masked
+
+
+def mask_binary_string(binary_str):
+    """
+    Mask a binary string to exactly 32 bits.
+    
+    @param binary_str - Binary string to mask
+    @return - 32-bit binary string (truncated or zero-padded as needed)
+    """
+    # Remove any spaces or prefixes
+    clean_str = binary_str.replace(' ', '').replace('0b', '')
+    
+    # Truncate or pad to 32 bits
+    if len(clean_str) > 32:
+        # Keep only the lowest 32 bits (rightmost 32 characters)
+        clean_str = clean_str[-32:]
+    elif len(clean_str) < 32:
+        # Pad with leading zeros
+        clean_str = clean_str.zfill(32)
+    
+    return clean_str
+
+
+def mask_hex_string(hex_str, prefix="0x"):
+    """
+    Mask a hexadecimal string to 32 bits (8 hex digits).
+    
+    @param hex_str - Hexadecimal string (with or without 0x prefix)
+    @param prefix - Whether to include 0x prefix in output
+    @return - 32-bit hex string with exactly 8 hex digits
+    """
+    # Remove prefix
+    clean = hex_str.replace('0x', '').replace('0X', '')
+    
+    # Convert to int and mask to 32 bits
+    value = int(clean, 16) & 0xFFFFFFFF
+    
+    # Convert back to hex with 8 digits
+    hex_result = f"{value:08X}"
+    
+    if prefix:
+        return f"{prefix}{hex_result}"
+    return hex_result

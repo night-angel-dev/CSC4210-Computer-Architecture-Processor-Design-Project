@@ -87,7 +87,7 @@ class CPU:
         if fetch_addr is None:
             fetch_addr = self.program_counter
             # For sequential execution, PC increments by 4 (32-bit instructions)
-            self.program_counter = self.program_counter + 4
+            self.program_counter += 4
         
         # Fetch instruction
         instruction = self.fetch_instruction(fetch_addr)
