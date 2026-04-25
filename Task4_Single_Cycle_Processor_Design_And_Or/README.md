@@ -115,7 +115,7 @@ Task 4 is explicitly connected to the earlier tasks. `alu.py` and `extend.py` bo
 
 ### **clock.py** - Re-exports Task 3 Clock
 - Loads `Task3_Memory_Hierarchy_Simulation/clock.py` by absolute path via `importlib.util` to avoid a module naming conflict
-- `Clock` — re-exported class; tracks cycle count and elapsed time
+- `Clock` - re-exported class; tracks cycle count and elapsed time
 
 ### **register_file.py** - 32x32-bit register file
 - `class RegisterFile`
@@ -217,7 +217,7 @@ Task 4 is explicitly connected to the earlier tasks. `alu.py` and `extend.py` bo
 - `main()` - Entry point: gets input, runs processor, prints register summary
 
 ### **test.py** - Test Suite
-- `expected(A, B, C, D)` - Python reference formula: `((A & B) | (~C & 0xFFFFFFFF) & D) & 0xFFFFFFFF`
+- `expected(A, B, C, D)` - Python reference formula: `((A & B) | (C' & 0xFFFFFFFF) & D) & 0xFFFFFFFF`
 - `run_test(A, B, C, D)` - Instantiates processor, suppresses stdout via contextlib, returns (result, passed, expected)
 - `test_boolean_inputs()` - Runs all 16 combinations of A, B, C, D in {0, 1}
 - `test_32bit_inputs()` - Runs 8 32-bit integer edge cases (all-zeros, all-ones, alternating bits, masking)
