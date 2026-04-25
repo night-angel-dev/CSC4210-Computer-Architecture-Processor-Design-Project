@@ -237,4 +237,4 @@ Task 4 is explicitly connected to the earlier tasks. `alu.py` and `extend.py` bo
 | Clock-driven register write | `RegisterFile.write()` currently updates synchronously. A true single-cycle model would latch the write at the clock edge via `Clock.tick()`. |
 | Instruction memory from Task 3 cache | Currently `InstructionMemory` uses a plain Python dict. Connecting it to Task 3's L1 cache and memory hierarchy would model realistic instruction fetch latency. |
 | Expanded test.py | `test.py` currently tests the full pipeline only. Dedicated unit tests for individual components (ALU, extend, control unit, register file) using the existing `__main__` test blocks would give finer-grained failure isolation. |
-| README for Tasks 1-3 | Each task has working code but no README. Consistent documentation across all four tasks would improve project completeness for the submission. |
+
