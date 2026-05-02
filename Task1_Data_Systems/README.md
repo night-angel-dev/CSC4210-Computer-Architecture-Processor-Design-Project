@@ -64,10 +64,11 @@ This project implements a 32-bit signed integer converter for an IoT processor p
 ### Prerequisites
 - Python 3.6 or higher
 
-'''markdown
+
 ### Running the Interactive Interface
 ```bash
 python main.py
+```
 
 
 
