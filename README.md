@@ -40,6 +40,7 @@ Processor Design Project/
   - karnaugh_map.py
   - main.py
   - output_formatter.py
+  - README.md
   - test.py
   - truth_table.py
 - Task3_Memory_Hierarchy_Simulation/
