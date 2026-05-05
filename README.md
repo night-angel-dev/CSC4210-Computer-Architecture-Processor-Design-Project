@@ -287,7 +287,7 @@ A few requirements from the task PDFs were interpreted differently or left parti
 - **Task 2 - POS K-Map**: The assignment requires the user to be able to select SOP or POS output. SOP simplification is fully implemented via K-map 1-cell grouping, but POS simplification (grouping 0-cells on the K-map) is not, the POS canonical form is generated from maxterms but is not reduced by the K-map.
 - **Task 2 - n > 4 variables**: The specification states `n ≥ 2` with no stated upper bound. The implementation caps at 4 because K-maps are impractical beyond that, but there is no fallback algorithm (e.g., Quine-McCluskey) for larger inputs.
 - **Task 3 - bandwidth enforcement**: The configuration exposes a bandwidth limit (instructions per cycle) but the simulator does not enforce it during transfers - all data moves instantly within the defined latency window rather than being rate-limited per cycle.
-- **Task 1 → Tasks 2/4 - saturation in computation**: Task 1's saturation logic (clamping on overflow) was designed as a processor-level constraint, but it is never applied when the ALU in Task 4 produces a result — intermediate register values can silently exceed 32-bit range before masking.
+- **Task 1 → Tasks 2/4 - saturation in computation**: Task 1's saturation logic (clamping on overflow) was designed as a processor-level constraint, but it is never applied when the ALU in Task 4 produces a result - intermediate register values can silently exceed 32-bit range before masking.
 
 ### Toward a Real Processor
 
